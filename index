@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postal Interactiva de Cumpleaños</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .postal-container {
+            perspective: 1000px;
+        }
+        .postal {
+            width: 300px;
+            height: 200px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+            cursor: pointer;
+        }
+        .postal.is-flipped {
+            transform: rotateY(180deg);
+        }
+        .postal-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .postal-front {
+            background-image: url('https://via.placeholder.com/300x200'); /* Cambia por la URL de tu imagen */
+            background-size: cover;
+            background-position: center;
+        }
+        .postal-back {
+            background-color: #ffe4e1;
+            transform: rotateY(180deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .postal-back p {
+            font-size: 1.2rem;
+            color: #333;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="postal-container">
+        <div class="postal" id="postal">
+            <div class="postal-face postal-front"></div>
+            <div class="postal-face postal-back">
+                <p>🎉 ¡Feliz cumpleaños! 🎉<br>Que todos tus sueños se hagan realidad. 🥳</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const postal = document.getElementById('postal');
+        postal.addEventListener('click', () => {
+            postal.classList.toggle('is-flipped');
+        });
+    </script>
+</body>
+</html>
